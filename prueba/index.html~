@@ -1,0 +1,230 @@
+ <HTML>
+
+<HEAD>
+
+<TITLE>Motion</TITLE>
+
+</HEAD>
+
+<BODY>
+
+<H1>Bienvenido!</H1>
+
+<H3>Seleccione 1 opcion <H3>
+
+
+<BR>
+
+<table border='2' >
+<form action="accion.html" method="get">
+ 
+                            <tr>
+                            <td colspan="7"><strong>Formulario  <br /></strong> </td>
+                                </tr><tr>
+                                    <td>Min</td>
+                                    <td>Hora</td>
+                                    <td>Frecuencia en dias</td>
+                                    <td>Mes</td>
+				    <td>Dia de la Semana</td>	
+                                     <td>Enviar</td> 
+ <tr>
+<td>
+<SELECT name="Minutos">
+        <OPTION selected label="minutos" value="minutos">minutos</OPTION>
+        <OPTION label="*" value="*"> *</OPTION>	
+        <OPTION label="1" value="1"> 1 min</OPTION>
+        <OPTION label="2" value="2"> 2 min</OPTION>
+        <OPTION label="3" value="3"> 3 min</OPTION>
+        <OPTION label="4" value="4"> 4 min</OPTION>
+        <OPTION label="5" value="5"> 5 min</OPTION>
+	<OPTION label="6" value="6"> 6 min</OPTION>
+	<OPTION label="7" value="7"> 7 min</OPTION>
+	<OPTION label="8" value="8"> 8 min</OPTION>
+	<OPTION label="9" value="9"> 9 min</OPTION>
+	<OPTION label="10" value="10"> 10 min</OPTION>
+	<OPTION label="11" value="11"> 11 min</OPTION>
+        <OPTION label="12" value="12"> 12 min</OPTION>
+        <OPTION label="13" value="13"> 13 min</OPTION>
+        <OPTION label="14" value="14"> 14 min</OPTION>
+        <OPTION label="15" value="15"> 15 min</OPTION>
+	<OPTION label="16" value="16"> 16 min</OPTION>
+	<OPTION label="17" value="17"> 17 min</OPTION>
+	<OPTION label="18" value="18"> 18 min</OPTION>
+	<OPTION label="19" value="19"> 19 min</OPTION>
+	<OPTION label="20" value="20"> 20 min</OPTION>
+	<OPTION label="21" value="21"> 21 min</OPTION>
+        <OPTION label="22" value="22"> 22 min</OPTION>
+        <OPTION label="23" value="23"> 23 min</OPTION>
+        <OPTION label="24" value="24"> 24 min</OPTION>
+        <OPTION label="25" value="25"> 25 min</OPTION>
+	<OPTION label="26" value="26"> 26 min</OPTION>
+	<OPTION label="27" value="27"> 27 min</OPTION>
+	<OPTION label="28" value="28"> 28 min</OPTION>
+	<OPTION label="29" value="29"> 29 min</OPTION>
+	<OPTION label="30" value="30"> 30 min</OPTION>
+	<OPTION label="31" value="13"> 13 min</OPTION>
+        <OPTION label="32" value="32"> 32 min</OPTION>
+        <OPTION label="33" value="33"> 33 min</OPTION>
+        <OPTION label="34" value="34"> 34 min</OPTION>
+        <OPTION label="35" value="35"> 35 min</OPTION>
+	<OPTION label="36" value="36"> 36 min</OPTION>
+	<OPTION label="37" value="37"> 37 min</OPTION>
+	<OPTION label="38" value="38"> 38 min</OPTION>
+	<OPTION label="39" value="39"> 39 min</OPTION>
+	<OPTION label="40" value="40"> 40 min</OPTION>
+	<OPTION label="41" value="41"> 41 min</OPTION>
+        <OPTION label="42" value="42"> 42 min</OPTION>
+        <OPTION label="43" value="43"> 43 min</OPTION>
+        <OPTION label="44" value="44"> 44 min</OPTION>
+        <OPTION label="45" value="45"> 45 min</OPTION>
+	<OPTION label="46" value="46"> 46 min</OPTION>
+	<OPTION label="47" value="47"> 47 min</OPTION>
+	<OPTION label="48" value="48"> 48 min</OPTION>
+	<OPTION label="49" value="49"> 49 min</OPTION>
+	<OPTION label="50" value="50"> 50 min</OPTION>
+	<OPTION label="51" value="51"> 51 min</OPTION>
+        <OPTION label="52" value="52"> 52 min</OPTION>
+        <OPTION label="53" value="53"> 53 min</OPTION>
+        <OPTION label="54" value="54"> 54 min</OPTION>
+        <OPTION label="55" value="55"> 55 min</OPTION>
+	<OPTION label="56" value="56"> 56 min</OPTION>
+	<OPTION label="57" value="57"> 57 min</OPTION>
+	<OPTION label="58" value="58"> 58 min</OPTION>
+	<OPTION label="59" value="59"> 59 min</OPTION>
+	<OPTION label="60" value="60"> 60 min</OPTION>
+ </SELECT>
+</td>
+<td>
+<SELECT name="Hora">
+     <OPTION selected label="hora" value="hora">hora</OPTION>
+        <OPTION label="*" value="*"> *</OPTION>
+	<OPTION label="00" value="00"> 00 hr</OPTION>
+        <OPTION label="01" value="01"> 01 hr</OPTION>
+        <OPTION label="02" value="02"> 02 hr</OPTION>
+        <OPTION label="03" value="03"> 03 hr</OPTION>
+        <OPTION label="04" value="04"> 04 hr</OPTION>
+        <OPTION label="05" value="05"> 05 hr</OPTION>
+	<OPTION label="06" value="06"> 06 hr</OPTION>
+	<OPTION label="07" value="07"> 07 hr</OPTION>
+	<OPTION label="08" value="08"> 08 hr</OPTION>
+	<OPTION label="09" value="09"> 09 hr</OPTION>
+	<OPTION label="10" value="10"> 10 hr</OPTION>
+	<OPTION label="11" value="11"> 11 hr</OPTION>
+        <OPTION label="12" value="12"> 12 hr</OPTION>
+        <OPTION label="13" value="13"> 13 hr</OPTION>
+        <OPTION label="14" value="14"> 14 hr</OPTION>
+        <OPTION label="15" value="15"> 15 hr</OPTION>
+	<OPTION label="16" value="16"> 16 hr</OPTION>
+	<OPTION label="17" value="17"> 17 hr</OPTION>
+	<OPTION label="18" value="18"> 18 hr</OPTION>
+	<OPTION label="19" value="19"> 19 hr</OPTION>
+	<OPTION label="20" value="20"> 20 hr</OPTION>
+	<OPTION label="21" value="21"> 21 hr</OPTION>
+        <OPTION label="22" value="22"> 22 hr</OPTION>
+        <OPTION label="23" value="23"> 23 hr</OPTION>
+        <OPTION label="24" value="24"> 24 hr</OPTION>
+</SELECT>
+
+</td>
+
+<td>
+<SELECT name="dia">
+     <OPTION selected label="dia" value="dia">dia</OPTION>
+        <OPTION label="*" value="*"> *</OPTION>
+        <OPTION label="1" value="1"> 1 </OPTION>
+        <OPTION label="2" value="2"> 2 </OPTION>
+        <OPTION label="3" value="3"> 3 </OPTION>
+        <OPTION label="4" value="4"> 4 </OPTION>
+        <OPTION label="5" value="5"> 5 </OPTION>
+	<OPTION label="6" value="6"> 6 </OPTION>
+	<OPTION label="7" value="7"> 7 </OPTION>
+	<OPTION label="8" value="8"> 8 </OPTION>
+	<OPTION label="9" value="9"> 9 </OPTION>
+	<OPTION label="10" value="10"> 10 </OPTION>
+	<OPTION label="11" value="11"> 11 </OPTION>
+        <OPTION label="12" value="12"> 12 </OPTION>
+        <OPTION label="13" value="13"> 13 </OPTION>
+        <OPTION label="14" value="14"> 14 </OPTION>
+        <OPTION label="15" value="15"> 15 </OPTION>
+	<OPTION label="16" value="16"> 16 </OPTION>
+	<OPTION label="17" value="17"> 17 </OPTION>
+	<OPTION label="18" value="18"> 18 </OPTION>
+	<OPTION label="19" value="19"> 19 </OPTION>
+	<OPTION label="20" value="20"> 20 </OPTION>
+	<OPTION label="21" value="21"> 21 </OPTION>
+        <OPTION label="22" value="22"> 22 </OPTION>
+        <OPTION label="23" value="23"> 23 </OPTION>
+        <OPTION label="24" value="24"> 24 </OPTION>
+        <OPTION label="25" value="25"> 25 </OPTION>
+	<OPTION label="26" value="26"> 26 </OPTION>
+	<OPTION label="27" value="27"> 27 </OPTION>
+	<OPTION label="28" value="28"> 28 </OPTION>
+	<OPTION label="29" value="29"> 29 </OPTION>
+	<OPTION label="30" value="30"> 30 </OPTION>
+	<OPTION label="31" value="31"> 31 </OPTION>
+</select>
+</td>
+<td>
+
+	<SELECT name="Mes">
+     	<OPTION selected label="mes" value="mes">mes</OPTION>
+        <OPTION label="*" value="*"> *</OPTION>
+        <OPTION label="1" value="1"> 1 </OPTION>
+        <OPTION label="2" value="2"> 2 </OPTION>
+        <OPTION label="3" value="3"> 3 </OPTION>
+        <OPTION label="4" value="4"> 4 </OPTION>
+        <OPTION label="5" value="5"> 5 </OPTION>
+	<OPTION label="6" value="6"> 6 </OPTION>
+	<OPTION label="7" value="7"> 7 </OPTION>
+	<OPTION label="8" value="8"> 8 </OPTION>
+	<OPTION label="9" value="9"> 9 </OPTION>
+	<OPTION label="10" value="10"> 10 </OPTION>
+	<OPTION label="11" value="11"> 11 </OPTION>
+        <OPTION label="12" value="12"> 12 </OPTION>
+</select>
+</td>
+
+<td>
+ <SELECT name="semana">
+     <OPTION selected label="semana" value="semana">Dia Sem</OPTION>
+        <OPTION label="*" value="*"> *</OPTION>
+	<OPTION label="0" value="0"> Lunes </OPTION>
+        <OPTION label="1" value="1"> Martes </OPTION>
+        <OPTION label="2" value="2"> Miercoles </OPTION>
+        <OPTION label="3" value="3"> Jueves </OPTION>
+        <OPTION label="4" value="4"> Viernes </OPTION>
+        <OPTION label="5" value="5"> Sabado </OPTION>
+	<OPTION label="6" value="6"> Domingo </OPTION>
+</select>
+</td>
+
+<td>
+ <SELECT name="tarea">
+     <OPTION selected label="tarea" value="tarea">Tarea</OPTION>
+        <OPTION label="foto" value="foto">foto</OPTION>
+	<OPTION label="filmar" value="filmar">filmar</OPTION>
+        
+</select>
+</td>
+
+
+<!-- link
+<td>
+<a href='ejecutar.html?minutos=minutos&&hora=hora&&dia=dia&&mes=mes&&semana=semana'> Ejecutar </a> 
+</td>
+-->
+<td>
+<input type="submit" />
+</td>
+</tr>
+</table>
+
+</form>
+
+</UL>
+
+</form>
+
+</BODY>
+
+</HTML> 

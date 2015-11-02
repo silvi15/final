@@ -1,6 +1,6 @@
 #include "proxy.h"
 
-int parsear (char *buffer,int sdmotion,int sdtc, sem_t *sem){
+int parsear (char *buffer,int sdmotion,int sdtc){
  
 	int archivo; //archivo de configuracion
 	char *ipserver; // guarda ip
@@ -70,7 +70,7 @@ if(strtok(buffer, " "))
 
   		 	}//index.html
   			else{
-  				funcion(path,sdtc, sem);
+  				funcion(path,sdtc);
 
   			}
 

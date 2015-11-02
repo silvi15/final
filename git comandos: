@@ -1,0 +1,8 @@
+git comandos:
+
+1) git status -> muestra los cambios
+2)git checkout . -> para volver a tras, de los archivos q modifique
+				 -> es con "." y sino el archivo especifico q quiero cambiar	
+
+3)git commit -a -m "mensaje para aclarar los cambios guardados"
+4)git add . -> es para agragar archivos nuevos.

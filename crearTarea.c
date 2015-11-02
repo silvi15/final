@@ -23,7 +23,7 @@ void escaparAsteriscos(char *texto){
 	strcpy(texto, textoNuevo);
 }
 
-void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tarea, int sdtc, sem_t *sem)
+void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tarea, int sdtc)
 {
 	int status;
 	//char bufferCodigo[100];
@@ -79,7 +79,6 @@ void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tar
 	close(sdtc);
 	}	
 	printf("TAREA PROGRAMADA\n");
-	sem_post(sem);
 /*	
 verificar la tarea creada:
 /var/spool/cron/crontabs. 

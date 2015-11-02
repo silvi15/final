@@ -1,6 +1,6 @@
 #include "proxy.h"
 
-void funcion(char * path,int sdtc, sem_t *sem){
+void funcion(char * path,int sdtc){
 char *p;
 //path :/accion.html?Minutos=*&Hora=00&dia=1&Mes=2&semana=*
 char *minutos,*hora,*dia,*mes,*semana,*tarea;  
@@ -31,7 +31,7 @@ p = strtok (path,"?");
 	min2 = strtok(minutos , "&H");
 	printf("minutos:%s\n",min2);
   	
-	crearTarea(min2,hora,dia,mes,semana,tarea,sdtc, sem);
+	crearTarea(min2,hora,dia,mes,semana,tarea,sdtc);
 /*
 path :/accion.html?Minutos=1&Hora=*&dia=*&Mes=2&semana=0&tarea=filmar
 

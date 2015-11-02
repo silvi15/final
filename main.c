@@ -17,19 +17,26 @@ int main (int argc, char *const argv[]){
 	int puerto = 5000;
 	int reuse;
 	int estado_hijo;
+	
 
 	/* sdtc: socket descriptor totalmente conectado */
 	int sdtc;
-
+	socklen_t longitud_cliente;
 	/* Definimos la estructura vacia con {}*/
-	struct sockaddr_in mi_direccion = {};
-	
+	struct sockaddr_in mi_direccion;
+	//struct sockaddr_in dir_cliente = {};
+	struct sockaddr_in dir_cliente;
+	/* estructura para definir las ip externas q se conectan*/
+	//struct sockaddr cliente;
+			
 	/* Creamos un extremo de comunicacion asociado a un descriptor */
 	sd = socket (PF_INET, SOCK_STREAM, 0);
     
 	sem_t *sem; // creamos el semaforo en 1 = verde
-	sem = sem_open ("/sem", O_CREAT | O_RDWR, 0666, 1);
-	sem_post(sem);
+	
+	sem_unlink ("/sem");
+	sem = sem_open ("/sem", O_CREAT | O_RDWR, 0666, 1);//sem init
+	//sem_post(sem);
 
 	if (sem == SEM_FAILED)
 		perror ("sem_open()");
@@ -59,20 +66,25 @@ int main (int argc, char *const argv[]){
 		return -1;
 	}
 
-	
-	while ((sdtc = accept (sd, NULL, 0)) > 0){	
+	longitud_cliente=sizeof(dir_cliente);
+	                     
+	while ((sdtc = accept (sd, (struct sockaddr*) &dir_cliente, &longitud_cliente)) > 0){	
+			//while ((sdtc = accept (sd, &cliente, &longitud_cliente)) > 0){ 	
+
 		int valor;
 		sem_getvalue(sem,&valor);
 		printf("valor del sem:%d\n",valor );
 		sem_wait(sem);
 
+		printf("valor del sem:%d\n",valor );
+
 		nroproc = fork ();
 
 		/*codigo del hijo*/
 		if (nroproc == 0){
-			sem_post(sem);
+		//	sem_post(sem);
 			
-			estado_hijo = hijo (sdtc,sem); // funcion crear hijo
+			estado_hijo = hijo (sdtc,sem,dir_cliente); // funcion crear hijo
 
 			if (estado_hijo != 0){
 				perror ("Error en hijo");

@@ -1,7 +1,7 @@
 
 #include "proxy.h"
 
-int hijo (int sdtc, sem_t * sem){
+int hijo (int sdtc, sem_t * sem, struct sockaddr_in dir_cliente){
 
 	
 	char buffer[4096]; /*almacena la comunicacion*/
@@ -17,7 +17,7 @@ int hijo (int sdtc, sem_t * sem){
 	//crear fecha y hora
 	time_t tiempo = time(0);
     struct tm *tlocal = localtime(&tiempo);
-    char output[128];
+    char output[128], cadena[128];
     
 	pthread_t tid; //declaro la declaracion del hilo
 	//printf ("hijo = %d\n", getpid());
@@ -43,13 +43,13 @@ int hijo (int sdtc, sem_t * sem){
 	//printf("buffer del navegador \n%s",buffer);
 	
 	strftime(output,128,"%d/%m/%y %H:%M:%S",tlocal);
-   	printf("fecha y hora:%s\n",output);
+   	sprintf(cadena, "%s: fecha y hora:%s\n",inet_ntoa(dir_cliente.sin_addr),output);
 	
 	if (connect (sdmotion, (struct sockaddr *)&Direccion, sizeof Direccion) == -1)
 		perror ("connect");	
 
 		int hilo;	
-		hilo = pthread_create (&tid, NULL, clientes, (void *)output);
+		hilo = pthread_create (&tid, NULL, clientes, (void *)cadena);
 	
 		if(hilo !=0){
 			printf("error al crear un hilo\n");
@@ -60,7 +60,7 @@ int hijo (int sdtc, sem_t * sem){
 			
 
 	write(sdmotion, buffer, leido);
-	parsear(buffer,sdmotion, sdtc,sem);
+	parsear(buffer,sdmotion, sdtc);
 
 	while ((leidomotion=read(sdmotion,buffermotion, sizeof buffermotion)) > 0){
 		
@@ -71,7 +71,7 @@ int hijo (int sdtc, sem_t * sem){
 	
 	close(sdmotion);	
 
-	
+	sem_post(sem);	
 return 0;
 
 }

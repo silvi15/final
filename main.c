@@ -32,15 +32,8 @@ int main (int argc, char *const argv[]){
 	/* Creamos un extremo de comunicacion asociado a un descriptor */
 	sd = socket (PF_INET, SOCK_STREAM, 0);
     
-	sem_t *sem; // creamos el semaforo en 1 = verde
-	
-	sem_unlink ("/sem");
-	sem = sem_open ("/sem", O_CREAT | O_RDWR, 0666, 1);//sem init
-	//sem_post(sem);
-
-	if (sem == SEM_FAILED)
-		perror ("sem_open()");
-
+	if (sem_init(&sem, 0, 1) == -1)
+			perror("sem_init");	
 
 	if (sd < 0){
 		perror ("error en el socket: ");
@@ -69,22 +62,29 @@ int main (int argc, char *const argv[]){
 	longitud_cliente=sizeof(dir_cliente);
 	                     
 	while ((sdtc = accept (sd, (struct sockaddr*) &dir_cliente, &longitud_cliente)) > 0){	
-			//while ((sdtc = accept (sd, &cliente, &longitud_cliente)) > 0){ 	
-
-		int valor;
-		sem_getvalue(sem,&valor);
-		printf("valor del sem:%d\n",valor );
-		sem_wait(sem);
-
-		printf("valor del sem:%d\n",valor );
-
+		
 		nroproc = fork ();
 
 		/*codigo del hijo*/
 		if (nroproc == 0){
-		//	sem_post(sem);
 			
-			estado_hijo = hijo (sdtc,sem,dir_cliente); // funcion crear hijo
+			int valor;
+
+			sem_getvalue(&sem,&valor);
+
+			printf("valor del sem antes del wait:%d\n",valor );
+
+			sem_wait(&sem);
+
+			int valor2;
+
+			sem_getvalue(&sem,&valor2);
+
+
+			printf("valor del sem despues del wait:%d\n",valor2 );
+
+					 	
+			estado_hijo = hijo (sdtc,dir_cliente); // funcion crear hijo
 
 			if (estado_hijo != 0){
 				perror ("Error en hijo");
@@ -98,6 +98,7 @@ int main (int argc, char *const argv[]){
 
 		}
 
+	sem_destroy(&sem);
 	close (sdtc);
 	 	
 	}

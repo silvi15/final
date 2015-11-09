@@ -6,7 +6,7 @@ void *clientes(void * output){
 
 	if((archivo = open("clientesConectados.txt",O_RDWR | O_APPEND ,0))<0){
 			printf("Error al abrir el archivo");
-			
+			return -1;
 			}
 	
     
@@ -16,6 +16,7 @@ void *clientes(void * output){
         			printf("erro al escribir el archivo\n");    // strictly not an error, it is allowable for fewer characters than requested to be written.
         	
     			}
+        
     		write(archivo,"\n",1);
 
     		return 0;

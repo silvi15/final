@@ -28,8 +28,9 @@
 	#define DEFAULT_PORT 80
 	#define PUERTO_CLIENTE "8080" /* Es el puerto en el que escuchará mi cliente intermedio */
 
+	static sem_t sem;
 
-	int hijo (int sdtc, sem_t * sem, struct sockaddr_in dir_cliente);
+	int hijo (int sdtc, struct sockaddr_in dir_cliente);
 	void *clientes(void * output);
 	int parsear (char *buffer,int sdtc, int sdmotion);
 	int http(int, char*, char*);

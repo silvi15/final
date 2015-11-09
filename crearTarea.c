@@ -34,8 +34,8 @@ void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tar
 	//root=/home/silvina/Escritorio/funcion/prueba/ejemplos/
 	char *user="root";
 	//char* rutaAlEjecutable = "/home/silvina/Escritorio/miprograma.sh";
-	char* rutaAlEjecutable = "wget http://localhost:8080/0/action/snapshot";
-
+	char* rutaAlEjecutable = "/usr/bin/wget http://localhost:8080/0/action/snapshot";
+	
 	strcat(entradaCron, min2);
 	strcat(entradaCron, " ");
 	strcat(entradaCron, hora);

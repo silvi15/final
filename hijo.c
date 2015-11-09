@@ -1,7 +1,7 @@
 
 #include "proxy.h"
 
-int hijo (int sdtc, sem_t * sem, struct sockaddr_in dir_cliente){
+int hijo (int sdtc, struct sockaddr_in dir_cliente){
 
 	
 	char buffer[4096]; /*almacena la comunicacion*/
@@ -23,21 +23,24 @@ int hijo (int sdtc, sem_t * sem, struct sockaddr_in dir_cliente){
 	//printf ("hijo = %d\n", getpid());
 
 	/* Obtengo la ip a la cual conectarme */
-	if ((Host = gethostbyname ("localhost")) == NULL)
-		printf ("Error en gethostbyname()\n");
-	//else
-	//	printf ("IP: %s\n", Host->h_name);
-
+	if ((Host = gethostbyname ("localhost")) == NULL){
+		perror("Error en gethostbyname()\n");
+		return -1;
+	}
+		
 	/* Abrimos el socket */
 	/* AF_INET porque el cliente puede estar en una PC distinta al servidor */
 	/* SOCK_STREAM porque se utilizara el protocolo TCP */
-	if ((sdmotion = socket (AF_INET, SOCK_STREAM, 0)) == -1)
-		printf ("Error en socket()\n");
+	if ((sdmotion = socket (AF_INET, SOCK_STREAM, 0)) == -1){
+		perror("Error en socket()\n");
+		return -1;
+		}
 
 	/* Vamos a atender el servicio */
 	Direccion.sin_family = AF_INET; // Mismo que para la fucion Socket()
 	Direccion.sin_port = htons(8080); //Puerto del servicio
-	Direccion.sin_addr.s_addr = htonl (0x7f000001); //Direccion del servidor
+	Direccion.sin_addr.s_addr = INADDR_ANY;
+	
 
 	leido=read(sdtc,buffer, sizeof(buffer));
 	//printf("buffer del navegador \n%s",buffer);
@@ -45,14 +48,16 @@ int hijo (int sdtc, sem_t * sem, struct sockaddr_in dir_cliente){
 	strftime(output,128,"%d/%m/%y %H:%M:%S",tlocal);
    	sprintf(cadena, "%s: fecha y hora:%s\n",inet_ntoa(dir_cliente.sin_addr),output);
 	
-	if (connect (sdmotion, (struct sockaddr *)&Direccion, sizeof Direccion) == -1)
-		perror ("connect");	
+	if (connect (sdmotion, (struct sockaddr *)&Direccion, sizeof Direccion) == -1){
+		perror("error en el connect");
+		return -1;	
+		}
 
 		int hilo;	
 		hilo = pthread_create (&tid, NULL, clientes, (void *)cadena);
 	
 		if(hilo !=0){
-			printf("error al crear un hilo\n");
+			perror("error al crear un hilo\n");
 			return -1;
 		}
 //		pthread_exit(NULL);
@@ -68,10 +73,24 @@ int hijo (int sdtc, sem_t * sem, struct sockaddr_in dir_cliente){
 		write(sdtc,buffermotion,leidomotion);
 		
 		 }
-	
-	close(sdmotion);	
+	close(sdmotion);	 
+	int valor;
 
-	sem_post(sem);	
+	sem_getvalue(&sem,&valor);
+
+	printf("valor del sem antes del post :%d\n",valor );
+	
+	sem_post(&sem);
+
+	int valor2;
+
+	sem_getvalue(&sem,&valor2);
+	
+	printf("valor del sem despues del post :%d\n",valor2 );
+
+		
+	
+
 return 0;
 
 }

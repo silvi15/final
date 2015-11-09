@@ -23,7 +23,7 @@ if(strtok(buffer, " "))
 			return 0;
 			}
 	
-			abrir=read(archivo,bufferArchivo, sizeof bufferArchivo);
+	while((abrir=read(archivo,bufferArchivo, sizeof bufferArchivo)) > 0){		
 			bufferArchivo[abrir]='\0';
 	
 			ipserver=strtok(bufferArchivo,"=");
@@ -43,11 +43,11 @@ if(strtok(buffer, " "))
 			char bufferPagina[4096]; //guardar descriptores
 			bzero(bufferPagina,4096); 
 */
-			if(strcmp(path,"/index.html")==0){
+			if(strncmp(path,"/index.html",11)==0){
 		
 					char * extension="html"; //guardar html
 					printf("extension : %s\n",extension );
-					strcat(dirraiz,path);
+					strncat(dirraiz,path,11);
    					printf("dirraiz final:%s\n",dirraiz);
  					http(sdtc,dirraiz,extension);
 
@@ -73,6 +73,7 @@ if(strtok(buffer, " "))
   				funcion(path,sdtc);
 
   			}
+  		}//while
 
 return 0;
 

@@ -13,7 +13,7 @@ void *clientes(void * output){
    			write(archivo,"cliente:",8);
    			if(write(archivo,output, strlen((char *)output)) != strlen((char *)output))
     			{
-        			printf("erro al escribir el archivo\n");    // strictly not an error, it is allowable for fewer characters than requested to be written.
+        			printf("error al escribir el archivo\n");    // strictly not an error, it is allowable for fewer characters than requested to be written.
         	
     			}
         

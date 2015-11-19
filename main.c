@@ -14,11 +14,11 @@ int main (int argc, char *const argv[]){
 
 	/*socket descriptor*/
 	int sd;
-	int nroproc;
+	//int nroproc;
 	int longmax = 10;	
 	int puerto = 5000;
 	int reuse;
-	int estado_hijo;
+	//int estado_hijo;
 	
 
 	/* sdtc: socket descriptor totalmente conectado */
@@ -35,6 +35,7 @@ int main (int argc, char *const argv[]){
 	sd = socket (PF_INET, SOCK_STREAM, 0);
     
 	void *ptr1 = NULL;
+    
     char *mem_buff;
 
     sem_t *semaforo1;
@@ -91,9 +92,43 @@ int main (int argc, char *const argv[]){
 	                     
 	while ((sdtc = accept (sd, (struct sockaddr*) &dir_cliente, &longitud_cliente)) > 0){	
 		
-		nroproc = fork ();
+	
+	switch(fork()){
+            case -1: // error fork
+                perror("Error en la creacion de fork(hijo)");
+                return -1;
 
-		/*codigo del hijo*/
+            case 0: // proceso hijo
+                
+                   
+                printf("mem_buff Hijo %s\n",mem_buff);
+            
+                hijo(mem_buff,semaforo1,sdtc,dir_cliente);
+               // sem_post(semaforo1);
+                return 1;
+               
+         
+            default: // proceso padre
+            	
+                padre(mem_buff,semaforo1);
+                sem_wait(semaforo1);
+      
+      } // fin switch    
+
+
+	//sem_destroy(&semaforo1);
+	close (sdtc);
+	 	
+	}//while
+
+	return 0;
+}
+
+/*
+
+	nroproc = fork ();
+
+		//codigo del hijo
 		if (nroproc == 0){
 			
 			int valor;
@@ -121,18 +156,10 @@ int main (int argc, char *const argv[]){
 		
 
 		
-			/*hago un return 0 para que tenga vida mientras viva el cliente, dps muere*/
+			//hago un return 0 para que tenga vida mientras viva el cliente, dps muere
 			return 0;
 
 		}
-
-	sem_destroy(&semaforo1);
-	close (sdtc);
-	 	
-	}
-
-	return 0;
-}
-
+*/
 
 

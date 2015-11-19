@@ -30,7 +30,9 @@
 
 //	sem_t sem;
 
-	int hijo (int sdtc,sem_t *semaforo1, struct sockaddr_in dir_cliente);
+	int hijo (char *mem_buff,void *semaforo,int sdtc,struct sockaddr_in dir_cliente);
+	int padre(char *mem_buff,void *semaforo1);
+
 	void *clientes(void * output);
 	int parsear (char *buffer,int sdtc, int sdmotion);
 	int http(int, char*, char*);

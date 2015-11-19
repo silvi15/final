@@ -1,7 +1,7 @@
 
 #include "proxy.h"
 
-int hijo (int sdtc, struct sockaddr_in dir_cliente){
+int hijo (int sdtc,sem_t *semaforo1, struct sockaddr_in dir_cliente){
 
 	
 	char buffer[4096]; /*almacena la comunicacion*/
@@ -73,21 +73,23 @@ int hijo (int sdtc, struct sockaddr_in dir_cliente){
 		write(sdtc,buffermotion,leidomotion);
 		
 		 }
-	close(sdmotion);	 
-	int valor;
+	
+	close(sdmotion);
 
-	sem_getvalue(&sem,&valor);
+/*	int valor;
+
+	sem_getvalue(&semaforo1,&valor);
 
 	printf("valor del sem antes del post :%d\n",valor );
-	
-	sem_post(&sem);
+*/	
+	sem_post(semaforo1);
 
-	int valor2;
+/*	int valor2;
 
-	sem_getvalue(&sem,&valor2);
+	sem_getvalue(&semaforo1,&valor2);
 	
 	printf("valor del sem despues del post :%d\n",valor2 );
-
+*/
 		
 	
 

@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <sys/mman.h>
 
+sem_t sem;
+
 int main (int argc, char *const argv[]){
 
 	/*socket descriptor*/
@@ -32,8 +34,34 @@ int main (int argc, char *const argv[]){
 	/* Creamos un extremo de comunicacion asociado a un descriptor */
 	sd = socket (PF_INET, SOCK_STREAM, 0);
     
-	if (sem_init(&sem, 0, 1) == -1)
-			perror("sem_init");	
+	void *ptr1 = NULL;
+    char *mem_buff;
+
+    sem_t *semaforo1;
+    
+    
+    int memsize = (sizeof(char *) * 1024) + sizeof(sem_t);
+
+    ptr1 = mmap (NULL, memsize, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+    //ptr1 = (char *) mmap (NULL, memsize, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+        
+    //printf("posicion de memoria ptr1: %p \n", ptr1);
+   
+    if (*(char *) ptr1  == -1){
+        perror ("Error en mmap ptr1\n");
+        return -1;
+    }
+
+    mem_buff = (char *)(ptr1 + sizeof(sem_t));
+    
+    semaforo1 = (sem_t *)ptr1;
+
+    //printf("semaforo 1: %p \n", (sem_t *) semaforo1);
+
+    if (sem_init(semaforo1, 1 , 0) < 0){
+        perror ("semaforo 1");
+        return -1;
+    };	
 
 	if (sd < 0){
 		perror ("error en el socket: ");
@@ -70,21 +98,21 @@ int main (int argc, char *const argv[]){
 			
 			int valor;
 
-			sem_getvalue(&sem,&valor);
+			sem_getvalue(&semaforo1,&valor);
 
 			printf("valor del sem antes del wait:%d\n",valor );
 
-			sem_wait(&sem);
+			sem_wait(&semaforo1);
 
 			int valor2;
 
-			sem_getvalue(&sem,&valor2);
+			sem_getvalue(&semaforo1,&valor2);
 
 
 			printf("valor del sem despues del wait:%d\n",valor2 );
 
 					 	
-			estado_hijo = hijo (sdtc,dir_cliente); // funcion crear hijo
+			estado_hijo = hijo (sdtc,semaforo1,dir_cliente); // funcion crear hijo
 
 			if (estado_hijo != 0){
 				perror ("Error en hijo");
@@ -98,7 +126,7 @@ int main (int argc, char *const argv[]){
 
 		}
 
-	sem_destroy(&sem);
+	sem_destroy(&semaforo1);
 	close (sdtc);
 	 	
 	}

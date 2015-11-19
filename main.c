@@ -109,9 +109,9 @@ int main (int argc, char *const argv[]){
                
          
             default: // proceso padre
-            	
+            	sem_wait(semaforo1);
                 padre(mem_buff,semaforo1);
-                sem_wait(semaforo1);
+                
       
       } // fin switch    
 

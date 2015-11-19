@@ -1,7 +1,7 @@
 #include "proxy.h"
 
 
-int padre(char *mem_buff,void *semaforo1){
+int padre(){
 
 	int archivo;
 	printf("llego al padre\n");

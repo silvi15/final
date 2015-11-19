@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <sys/mman.h>
 
-sem_t sem;
 
 int main (int argc, char *const argv[]){
 

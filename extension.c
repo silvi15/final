@@ -10,7 +10,7 @@ int funcionExtension(int sdtc , char* extension){
 	}
 
 	else{
-		printf("error en la funcion \n\n\n");
+		perror("error en la funcion \n\n\n");
 		write(sdtc,"HTTP/1.1 404 Not Found\r\n", 24);
 
 		return -1;

@@ -54,31 +54,31 @@ void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tar
 	escaparAsteriscos(entradaCronEscapada);
 
 	strcat(comandoSistema, "(crontab -l | grep -v \""); //coneste grep evitamos que el comando se repita si ya está cargado en el archivo de cron
-	strcat(comandoSistema, entradaCronEscapada);
-	strcat(comandoSistema, "\" && echo \"");
-	strcat(comandoSistema, entradaCron);
-	strcat(comandoSistema, "\") | crontab -");
+		strcat(comandoSistema, entradaCronEscapada);
+		strcat(comandoSistema, "\" && echo \"");
+		strcat(comandoSistema, entradaCron);
+		strcat(comandoSistema, "\") | crontab -");
 
-	status = system(comandoSistema);
-	if(status != 0){
-		fprintf(stderr, "ERROR AL INTENTAR AGREGAR TAREA A CRON (%d)\n", status);
-		return;
-	}
-	if(strcmp(tarea,"fo")==0){
-	printf("crear una foto\n");
+		status = system(comandoSistema);
+		if(status != 0){
+			fprintf(stderr, "ERROR AL INTENTAR AGREGAR TAREA A CRON (%d)\n", status);
+			return;
+		}
+		if(strcmp(tarea,"fo")==0){
+			printf("crear una foto\n");
 	write(sdtc,"GET /0/action/snapshot HTTP/1.1\r\n\r\n",35); // crea la foto y la manda por el descriptor
 	//read(sdtc,bufferCodigo,sizeof(bufferCodigo));
 
 	close(sdtc);		
-	}
-	if(strcmp(tarea,"film")==0){
+}
+if(strcmp(tarea,"film")==0){
 	printf("tarea film\n");
 	write(sdtc,"GET /0/action/makemovie HTTP/1.1\r\n\r\n",36); //creo la filmacion y la mando por el descriptor
 	//read(sdtc,bufferCodigo,sizeof(bufferCodigo));	
 
 	close(sdtc);
-	}	
-	printf("TAREA PROGRAMADA\n");
+}	
+printf("TAREA PROGRAMADA\n");
 /*	
 verificar la tarea creada:
 /var/spool/cron/crontabs. 

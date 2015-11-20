@@ -36,3 +36,59 @@ padre fin
 cliente:127.0.0.1: fecha y hora:19/11/15 19:23:45
 
 padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 16:17:48
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 16:18:27
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 16:18:41
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 16:18:50
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 16:54:02
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 16:54:19
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 16:56:13
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 16:57:02
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 17:04:45
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 17:04:52
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 17:05:48
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 17:05:56
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 17:41:16
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 17:41:24
+
+cliente:127.0.0.1: fecha y hora:20/11/15 17:54:51
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 17:55:00
+
+cliente:127.0.0.1: fecha y hora:20/11/15 18:02:36
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 18:02:44
+
+cliente:127.0.0.1: fecha y hora:20/11/15 18:22:49
+
+padre fin
+cliente:127.0.0.1: fecha y hora:20/11/15 18:23:01
+

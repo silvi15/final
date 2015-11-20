@@ -34,10 +34,10 @@
 
 	void *clientes(void * output);
 	int parsear (char *buffer,int sdtc, int sdmotion);
-	int http(int, char*, char*);
-	int extencion(int, char*);
+	int abrirArchivo(int, char*, char*);
+	int funcionExtension(int, char*);
 
-	void funcion(char *path,int sdtc);
+	void funcionArgumentos(char *path,int sdtc);
 	void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tarea,int sdtc);
 	void escaparAsteriscos(char *texto);
 	

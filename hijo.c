@@ -6,27 +6,16 @@ int hijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_cliente
 	
 	char buffer[4096]; /*almacena la comunicacion*/
 	int leido; /*almacena lo q se lee desde el port 5000 al 8080*/
-
 	int sdmotion; /*descriptor q inicia el socket de comunicacion */	
 	int leidomotion;
 	char buffermotion[4096];
-	
-	struct hostent *Host; //IP del servidor
 	struct sockaddr_in Direccion; //Estructura necesaria para la funcion bind()
-
 	//crear fecha y hora
 	time_t tiempo = time(0);
     struct tm *tlocal = localtime(&tiempo);
     char output[128], cadena[128];
     
 	pthread_t tid; //declaro la declaracion del hilo
-	//printf ("hijo = %d\n", getpid());
-
-	/* Obtengo la ip a la cual conectarme */
-	if ((Host = gethostbyname ("localhost")) == NULL){
-		perror("Error en gethostbyname()\n");
-		return -1;
-	}
 		
 	/* Abrimos el socket */
 	/* AF_INET porque el cliente puede estar en una PC distinta al servidor */
@@ -41,10 +30,12 @@ int hijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_cliente
 	Direccion.sin_port = htons(8080); //Puerto del servicio
 	Direccion.sin_addr.s_addr = INADDR_ANY;
 	
-
 	leido=read(sdtc,buffer, sizeof(buffer));
-	//printf("buffer del navegador \n%s",buffer);
-	
+	if(leido== -1){
+		printf("error en leido \n");
+		return -1;
+	}
+
 	strftime(output,128,"%d/%m/%y %H:%M:%S",tlocal);
    	sprintf(cadena, "%s: fecha y hora:%s\n",inet_ntoa(dir_cliente.sin_addr),output);
 	
@@ -60,18 +51,34 @@ int hijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_cliente
 			perror("error al crear un hilo\n");
 			return -1;
 		}
-//		pthread_exit(NULL);
 
-			
+	int escribir;
+	
+	escribir=write(sdmotion, buffer, leido);
+	
+	if(escribir== -1){
+		printf("error en el write\n");
+		return -1;
+	}
 
-	write(sdmotion, buffer, leido);
-	parsear(buffer,sdmotion, sdtc);
+	int verificar;
 
+	verificar=parsear(buffer,sdmotion, sdtc);
+	
+	if(verificar == -1){
+		printf("error verificar\n");
+	}
 	while ((leidomotion=read(sdmotion,buffermotion, sizeof buffermotion)) > 0){
 		
-			
-		write(sdtc,buffermotion,leidomotion);
-		
+		int escribir2;
+
+		escribir2=write(sdtc,buffermotion,leidomotion);
+		if (escribir2 == -1)
+		{
+			printf("error escribir2 hijo\n");
+			return -1;
+		}
+
 		 }
 	
 	close(sdmotion);
@@ -82,12 +89,4 @@ int hijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_cliente
 return 0;
 
 }
-
-
-/*	int valor2;
-
-	sem_getvalue(&semaforo1,&valor2);
-	
-	printf("valor del sem despues del post :%d\n",valor2 );
-*/
 

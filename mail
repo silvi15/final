@@ -1,0 +1,37 @@
+
+- Veo muchas funciones sin control de errores. Por ej, qué pasa si un read o write fallara? Falta manejo de error.
+
+
+
+- Si bien lo que investigaste sobre semáforos y memoria compartida está bien, sigo sin entender el uso de semáforo en la aplicación. El modo en el que lo usás, hace que los requerimientos se evaluen de manera secuencial, por lo que no tiene sentido crear múltiples procesos.
+
+
+
+- La función parsear() siempre retorna 0, en caso de error y en caso de éxito. Creo que habría que corregir eso.
+
+
+
+- Veo código comentado, si no se usa o no sirve de documentación, habría que borrarlo.
+
+
+- Para qué sirve la función "funcion" definida en funcion.c ? Habría que cambiarle el nombre.
+
+
+- La función "escaparAsteristos" también realiza un GET ? Falta cohesión en esa implementación, o escapa asteriscos o envía http requests.
+
+
+- Extension en castellano también va con "s".
+
+
+- La función http, no hace nada relacionado con http, debería tener un nombre de acuerdo a la 
+tarea que ejecuta.
+
+
+- La función "clientes" fue declarada como "void *", sin embargo en la implementación termina haciendo un "return 0" y en caso de error hace un "return -1". Eso hay que corregirlo.
+
+- Los nombres de las funciones deberían tener como primer palabra un verbo que indique la tarea que realiza.
+
+- Falta indentar el código.
+
+Saludos,
+

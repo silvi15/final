@@ -30,10 +30,10 @@
 
 
 	int hijo (char *mem_buff,void *semaforo,int sdtc,struct sockaddr_in dir_cliente);
-	int padre();
+	//int padre();
 
 	void *clientes(void * output);
-	int parsear (char *buffer,int sdtc, int sdmotion);
+	
 	int abrirArchivo(int, char*, char*);
 	int funcionExtension(int, char*);
 

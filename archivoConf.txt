@@ -1,4 +1,4 @@
-ip=27.0.0.1
+ip=127.0.0.1
 Puerto=5000
 root=/home/silvina/Escritorio/proxy/cambios/prueba
 

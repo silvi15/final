@@ -1,94 +1,104 @@
-cliente:127.0.0.1: fecha y hora:19/11/15 18:26:43
 
-padre:
-cliente:127.0.0.1: fecha y hora:19/11/15 18:26:46
+cliente:127.0.0.1: fecha y hora:30/11/15 17:23:49
 
-padre:
-cliente:127.0.0.1: fecha y hora:19/11/15 18:29:50
+cliente:127.0.0.1: fecha y hora:30/11/15 17:24:00
 
-padre:
-cliente:127.0.0.1: fecha y hora:19/11/15 18:29:57
+cliente:127.0.0.1: fecha y hora:30/11/15 17:26:59
 
-padre fin
-cliente:127.0.0.1: fecha y hora:19/11/15 18:51:48
+cliente:127.0.0.1: fecha y hora:30/11/15 17:27:07
 
-padre fin
-cliente:127.0.0.1: fecha y hora:19/11/15 18:51:51
+cliente:127.0.0.1: fecha y hora:30/11/15 18:10:26
 
-cliente:127.0.0.1: fecha y hora:19/11/15 19:02:01
+cliente:127.0.0.1: fecha y hora:30/11/15 18:13:28
 
-padre fin
-cliente:127.0.0.1: fecha y hora:19/11/15 19:02:09
+cliente:127.0.0.1: fecha y hora:30/11/15 18:25:29
 
-padre fin
-cliente:127.0.0.1: fecha y hora:19/11/15 19:02:19
+cliente:127.0.0.1: fecha y hora:30/11/15 18:27:33
 
-padre fin
-cliente:127.0.0.1: fecha y hora:19/11/15 19:02:42
+cliente:127.0.0.1: fecha y hora:30/11/15 18:31:34
 
-padre fin
-cliente:127.0.0.1: fecha y hora:19/11/15 19:02:53
+cliente:127.0.0.1: fecha y hora:30/11/15 18:32:25
 
-padre fin
-cliente:127.0.0.1: fecha y hora:19/11/15 19:23:35
+cliente:127.0.0.1: fecha y hora:30/11/15 18:33:07
 
-padre fin
-cliente:127.0.0.1: fecha y hora:19/11/15 19:23:45
+cliente:127.0.0.1: fecha y hora:30/11/15 18:33:18
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 16:17:48
+cliente:127.0.0.1: fecha y hora:30/11/15 18:37:17
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 16:18:27
+cliente:127.0.0.1: fecha y hora:30/11/15 18:37:26
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 16:18:41
+cliente:127.0.0.1: fecha y hora:30/11/15 18:41:28
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 16:18:50
+cliente:127.0.0.1: fecha y hora:30/11/15 18:47:46
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 16:54:02
+cliente:127.0.0.1: fecha y hora:01/12/15 16:42:38
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 16:54:19
+cliente:127.0.0.1: fecha y hora:01/12/15 16:42:39
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 16:56:13
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:00
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 16:57:02
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:02
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 17:04:45
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:02
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 17:04:52
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:03
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 17:05:48
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:04
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 17:05:56
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:04
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 17:41:16
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:04
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 17:41:24
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:05
 
-cliente:127.0.0.1: fecha y hora:20/11/15 17:54:51
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:35
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 17:55:00
+cliente:127.0.0.1: fecha y hora:01/12/15 16:43:36
 
-cliente:127.0.0.1: fecha y hora:20/11/15 18:02:36
+cliente:127.0.0.1: fecha y hora:01/12/15 16:47:44
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 18:02:44
+cliente:127.0.0.1: fecha y hora:01/12/15 16:47:51
 
-cliente:127.0.0.1: fecha y hora:20/11/15 18:22:49
+cliente:127.0.0.1: fecha y hora:01/12/15 16:47:52
 
-padre fin
-cliente:127.0.0.1: fecha y hora:20/11/15 18:23:01
+cliente:127.0.0.1: fecha y hora:01/12/15 16:48:36
 
+cliente:127.0.0.1: fecha y hora:01/12/15 16:48:36
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:48:59
+
+cliente:cliente:127.0.0.1: fecha y hora:01/12/15 16:52:28
+
+cliente:cliente:cliente:127.0.0.1: fecha y hora:01/12/15 16:52:28
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:29
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:30
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:30
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:34
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:35
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:35
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:35
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:46
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:52
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:53
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:53
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:53
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:52:54
+
+cliente:cliente:127.0.0.1: fecha y hora:01/12/15 16:52:54
+
+cliente:127.0.0.1: fecha y hora:01/12/15 16:53:36
+
+cliente:

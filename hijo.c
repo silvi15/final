@@ -10,13 +10,23 @@ int hijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_cliente
 	int leidomotion;
 	char buffermotion[4096];
 	struct sockaddr_in Direccion; //Estructura necesaria para la funcion bind()
+
+	char *path  = NULL; // lee la ruta
+	int archivo; //archivo de configuracion
+	char *ipserver; // guarda ip
+	int abrir; //  leer el archivo
+	char * dirraiz; // ruta
+	char *puertostring;//Para luego convertirlo a int
+	char bufferArchivo[256]; // guardar el archivo
+
+
 	//crear fecha y hora
 	time_t tiempo = time(0);
 	struct tm *tlocal = localtime(&tiempo);
 	char output[128], cadena[128];
-	
+
 	pthread_t tid; //declaro la declaracion del hilo
-	
+
 	/* Abrimos el socket */
 	/* AF_INET porque el cliente puede estar en una PC distinta al servidor */
 	/* SOCK_STREAM porque se utilizara el protocolo TCP */
@@ -31,18 +41,52 @@ int hijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_cliente
 	Direccion.sin_addr.s_addr = INADDR_ANY;
 	
 	leido=read(sdtc,buffer, sizeof(buffer));
+	
 	if(leido== -1){
 		perror("error en leido \n");
 		return -1;
 	}
 
+	//parsear(buffer,sdmotion, sdtc);
+	//probar, no necesito ni conectarme a motion, ni bajar el sem, 
+	// si es index, mando el form, y retorno,  
+	// si es action , hago el cron, retorno
+	// en el else bajar el sem
+
+	// parseo el buffer
+	if(strtok(buffer, " "))
+	{
+		path = strtok(NULL, " ");
+		if(path)
+			path=strdup(path);
+	}
+
+	printf("path:%s\n",path);// resultado de la ruta parseada
+
+	if((archivo = open("archivoConf.txt",O_RDONLY,0))<0){
+		perror("Error al abrir el archivo");
+		return -1;
+	}
+	
+	while((abrir=read(archivo,bufferArchivo, sizeof bufferArchivo)) > 0){		
+		bufferArchivo[abrir]='\0';
+		
+		ipserver=strtok(bufferArchivo,"=");
+		ipserver=strtok(NULL,"\n");
+		printf("ip server:%s\n",ipserver);
+		
+		puertostring=strtok(NULL,"=");
+		puertostring=strtok(NULL,"\n");
+		printf("puerto server:%s\n",puertostring);
+		
+		dirraiz = strtok (NULL, "=");
+		dirraiz = strtok (NULL, "\n");
+		printf ("Directorio Raiz: %s\n", dirraiz);
+
+	}//while
+
 	strftime(output,128,"%d/%m/%y %H:%M:%S",tlocal);
 	sprintf(cadena, "%s: fecha y hora:%s\n",inet_ntoa(dir_cliente.sin_addr),output);
-	
-	if (connect (sdmotion, (struct sockaddr *)&Direccion, sizeof Direccion) == -1){
-		perror("error en el connect");
-		return -1;	
-	}
 
 	int hilo;	
 	hilo = pthread_create (&tid, NULL, clientes, (void *)cadena);
@@ -52,40 +96,65 @@ int hijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_cliente
 		return -1;
 	}
 
-	int escribir;
+	if(strncmp(path,"/index.html",11)==0){
 	
-	escribir=write(sdmotion, buffer, leido);
+		char * extension="html"; //guardar html
+					
+		strncat(dirraiz,path,11);
+		printf("entrar al if\n");					
+		abrirArchivo(sdtc,dirraiz,extension);
+		close(sdtc);
+		return 0;
+	}
+	if(strncmp(path,"/accion.html",12)==0){
 	
-	if(escribir== -1){
-		perror("error en el write\n");
-		return -1;
+		printf("funcion cron\n" );
+		funcionArgumentos(path,sdtc);
+		close(sdtc);
+		return 0;
 	}
 
-	int verificar;
+	if(strncmp(path,"/snapshot",9)==0){
+		sem_wait(semaforo);
 
-	verificar=parsear(buffer,sdmotion, sdtc);
-	
-	if(verificar == -1){
-		perror("error verificar\n");
-		return -1;
-	}
-	while ((leidomotion=read(sdmotion,buffermotion, sizeof buffermotion)) > 0){
+
+		if (connect (sdmotion, (struct sockaddr *)&Direccion, sizeof Direccion) == -1){
+			perror("error en el connect");
+			sem_post(semaforo);
+			return -1;	
+		}
+
+		int escribir;
 		
-		int escribir2;
-
-		escribir2=write(sdtc,buffermotion,leidomotion);
-		if (escribir2 == -1)
-		{
-			perror("error escribir2 hijo\n"); ///////// ACA SALE ERROR!!
+		escribir=write(sdmotion, buffer, leido);
+		
+		if(escribir== -1){
+			perror("error en el write\n");
+			sem_post(semaforo);
 			return -1;
 		}
 
+
+		while ((leidomotion=read(sdmotion,buffermotion, sizeof buffermotion)) > 0){
+			
+			int escribir2;
+
+			escribir2=write(sdtc,buffermotion,leidomotion);
+			if (escribir2 == -1)
+			{
+				printf("error escribir2 hijo\n");
+				sem_post(semaforo);
+				return -1;
+			}
+
+		}
+		
+		sem_post(semaforo);
+		close(sdmotion);
 	}
-	
-	close(sdmotion);
 
-	sem_post(semaforo);
-
+	// Cualquier otro caso, por ejemplo /favicon.ico
+	close(sdtc);
 	
 	return 0;
 

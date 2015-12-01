@@ -9,12 +9,12 @@ int abrirArchivo(int sdtc, char *dirraiz, char *extension){
 	int leido;
 	int escribir;
 	int escribir2;
-	
+
 	if((txt = open (dirraiz, O_RDWR , S_IRWXU))<0){
 		perror("Error en open: ");
 		return -1;
 	}
-
+	printf("\n\nllegue a funcion abrir\n\n");
 	
 	N=funcionExtension(sdtc,extension);  // escri el tipo de archivo que le voya pasar 
 	
@@ -33,18 +33,18 @@ int abrirArchivo(int sdtc, char *dirraiz, char *extension){
 			}	
 
 			escribir2=write(sdtc,bufaux, sizeof (bufaux));
-			
+
 			if(escribir2 == -1){
 				perror("error escribir2 abrirArchivo\n");
 				return -1;
 			}
 
 			bzero(bufaux,512);
-			
+
 		}
 		return 0;                     
 	}
-	close(sdtc);
+	
 	close(txt);
 
 	

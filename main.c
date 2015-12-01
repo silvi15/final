@@ -39,7 +39,7 @@ int main (int argc, char *const argv[]){
 	
 	semaforo1 = (sem_t *)ptr1;
 
-	if (sem_init(semaforo1, 1 , 0) < 0){
+	if (sem_init(semaforo1, 0 , 1) < 0){
 		perror ("semaforo 1");
 		return -1;
 	};	
@@ -74,20 +74,18 @@ int main (int argc, char *const argv[]){
 		
 		
 		switch(fork()){
-            case -1: // error fork
-            perror("Error en la creacion de fork(hijo)");
-            return -1;
 
-            case 0: // proceso hijo
+            case -1: // error fork
+            	perror("Error en la creacion de fork(hijo)");
             
-            printf("mem_buff Hijo %s\n",mem_buff);
-            hijo(mem_buff,semaforo1,sdtc,dir_cliente);
-               // sem_post(semaforo1);
-            return 1;
-            default: // proceso padre
-            sem_wait(semaforo1);
-            padre(mem_buff,semaforo1);
-            
+            return -1;
+            break;
+
+            case 0: // proceso Hijo
+            	hijo(mem_buff,semaforo1,sdtc,dir_cliente);
+
+            return 0;
+            break;            
             
       } // fin switch    
 

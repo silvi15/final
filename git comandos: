@@ -7,3 +7,12 @@ git comandos:
 3)git commit -a -m "mensaje para aclarar los cambios guardados"
 4)git add . -> es para agragar archivos nuevos.
 git push origin master
+4) git rm miarchivo.php
+
+-------
+git rm cliente.o crearTarea.o ejemplo ejemplo.c extension.o funcion.o git comandos: hijo.o mail main.o padre.o padre.c parsear.c
+
+
+
+
+

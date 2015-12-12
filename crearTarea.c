@@ -26,15 +26,11 @@ void escaparAsteriscos(char *texto){
 void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tarea, int sdtc)
 {
 	int status;
-	//char bufferCodigo[100];
 	char comandoSistema[500] = ""; //Comando a ejecutar por el sistema, 500 caracteres como máximo
 	char entradaCron[400] = ""; //Tarea que quedará escrita en el archivo de cron
 	char entradaCronEscapada[400] = ""; //Tarea de cron con caracteres escapados para poder utilizar el comanod grep -v
-	//char* rutaAlEjecutable = "/home/pepito/miprograma.sh";
-	//root=/home/silvina/Escritorio/funcion/prueba/ejemplos/
 	char *user="root";
-	//char* rutaAlEjecutable = "/home/silvina/Escritorio/miprograma.sh";
-	char* rutaAlEjecutable = "/usr/bin/wget http://localhost:8080/0/action/snapshot";
+	char* rutaAlEjecutable = RUTA_EJECUTABLE;
 	
 	strcat(entradaCron, min2);
 	strcat(entradaCron, " ");
@@ -66,18 +62,14 @@ void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tar
 		}
 		if(strcmp(tarea,"fo")==0){
 			printf("crear una foto\n");
-	write(sdtc,"GET /0/action/snapshot HTTP/1.1\r\n\r\n",35); // crea la foto y la manda por el descriptor
-	//read(sdtc,bufferCodigo,sizeof(bufferCodigo));
-
-	close(sdtc);		
+			int prueba;
+			prueba=write(sdtc,"GET /0/action/snapshot HTTP/1.1\r\n\r\n",35); // crea la foto y la manda por el descriptor
+			if(prueba == -1){
+				perror("error en el write de crearTarea");
+			}
+			close(sdtc);		
 }
-if(strcmp(tarea,"film")==0){
-	printf("tarea film\n");
-	write(sdtc,"GET /0/action/makemovie HTTP/1.1\r\n\r\n",36); //creo la filmacion y la mando por el descriptor
-	//read(sdtc,bufferCodigo,sizeof(bufferCodigo));	
-
-	close(sdtc);
-}	
+	
 printf("TAREA PROGRAMADA\n");
 /*	
 verificar la tarea creada:

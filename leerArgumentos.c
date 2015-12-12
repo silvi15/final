@@ -1,6 +1,6 @@
 #include "proxy.h"
 
-void funcionArgumentos(char * path,int sdtc){
+void leerArgumentos(char * path,int sdtc){
 
 	char *p;
 	char *minutos,*hora,*dia,*mes,*semana,*tarea;  

@@ -25,10 +25,7 @@ int main (int argc, char *const argv[]){
 
 	sem_t *semaforo1;
 	
-	
-	int memsize = (sizeof(char *) * 1024) + sizeof(sem_t);
-
-	ptr1 = mmap (NULL, memsize, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+	ptr1 = mmap (NULL, SENSIZE, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 	
 	if (*(char *) ptr1  == -1){
 		perror ("Error en mmap ptr1\n");
@@ -82,7 +79,7 @@ int main (int argc, char *const argv[]){
             break;
 
             case 0: // proceso Hijo
-            	hijo(mem_buff,semaforo1,sdtc,dir_cliente);
+            	atenderHijo(mem_buff,semaforo1,sdtc,dir_cliente);
 
             return 0;
             break;            

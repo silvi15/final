@@ -1,6 +1,6 @@
 #include "proxy.h"
 
-void *clientes(void * output){
+void *escribirClientes(void * output){
 
 	int archivo;
   int escribir;
@@ -24,5 +24,5 @@ if(write(archivo,output, strlen((char *)output)) != strlen((char *)output))
            
            write(archivo,"\n",1);
 
-           
+          pthread_exit(NULL);
          }

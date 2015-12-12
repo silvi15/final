@@ -6,7 +6,7 @@ CFLAGS = -g -Wall
 
 all: proxy
 
-proxy: main.o hijo.o http.o extension.o funcion.o crearTarea.o clientes.o padre.o
+proxy: abrirArchivo.o atenderHijo.o crearTarea.o escribirClientes.o leerArgumentos.o leerExtension.o main.o
 	$(CC) -Wall -o $@ $^ $(LDLIBS)
 
 clean:

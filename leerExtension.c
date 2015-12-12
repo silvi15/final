@@ -1,6 +1,6 @@
 #include "proxy.h"
 
-int funcionExtension(int sdtc , char* extension){
+int leerExtension(int sdtc , char* extension){
 
 	if((strncmp("html",extension,4))==0 ){
 		

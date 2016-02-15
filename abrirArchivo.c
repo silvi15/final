@@ -4,8 +4,10 @@ int abrirArchivo(int sdtc, char *dirraiz, char *extension){
 
 	int N;
 	int txt;
+	
 	char bufaux[512];
 	bzero(bufaux,512);
+	
 	int leido;
 	int escribir;
 	int escribir2;
@@ -16,7 +18,7 @@ int abrirArchivo(int sdtc, char *dirraiz, char *extension){
 	}
 	printf("\n\nllegue a funcion abrir\n\n");
 	
-	N=leerExtension(sdtc,extension);  // escri el tipo de archivo que le voya pasar 
+	N=leerExtension(sdtc,extension);  // escri el tipo de archivo que le voy pasar 
 	
 	escribir=write (sdtc, "\r\n" , 2);
 

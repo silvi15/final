@@ -25,7 +25,7 @@ int atenderHijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_
 	struct tm *tlocal = localtime(&tiempo);
 	char output[128], cadena[128];
 
-	pthread_t tid; //declaro la declaracion del hilo
+	pthread_t tid; //declaracion del hilo
 
 	/* Abrimos el socket */
 	/* AF_INET porque el cliente puede estar en una PC distinta al servidor */
@@ -38,7 +38,7 @@ int atenderHijo (char *mem_buff,void *semaforo,int sdtc, struct sockaddr_in dir_
 	/* Vamos a atender el servicio */
 	Direccion.sin_family = AF_INET; // Mismo que para la fucion Socket()
 	Direccion.sin_port = htons(8080); //Puerto del servicio
-	Direccion.sin_addr.s_addr = INADDR_ANY;
+	Direccion.sin_addr.s_addr = INADDR_ANY;//direccion
 	
 	leido=read(sdtc,buffer, sizeof(buffer));
 	

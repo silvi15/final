@@ -12,19 +12,18 @@ int main (int argc, char *const argv[]){
 	socklen_t longitud_cliente;
 	/* Definimos la estructura vacia con {}*/
 	struct sockaddr_in mi_direccion;
-	//struct sockaddr_in dir_cliente = {};
-	struct sockaddr_in dir_cliente;
 	/* estructura para definir las ip externas q se conectan*/
-	
+	struct sockaddr_in dir_cliente;
+		
 	/* Creamos un extremo de comunicacion asociado a un descriptor */
 	sd = socket (PF_INET, SOCK_STREAM, 0);
-	
+		
 	void *ptr1 = NULL;
 	
 	char *mem_buff;
 
 	sem_t *semaforo1;
-	
+	/* al puntero le asignamos la memoria compartida*/
 	ptr1 = mmap (NULL, SENSIZE, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 	
 	if (*(char *) ptr1  == -1){
@@ -35,7 +34,7 @@ int main (int argc, char *const argv[]){
 	mem_buff = (char *)(ptr1 + sizeof(sem_t));
 	
 	semaforo1 = (sem_t *)ptr1;
-
+//0 para sem en hilos, sem inicializado en 1
 	if (sem_init(semaforo1, 0 , 1) < 0){
 		perror ("semaforo 1");
 		return -1;

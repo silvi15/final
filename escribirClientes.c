@@ -18,7 +18,7 @@ void *escribirClientes(void * output){
 }
 if(write(archivo,output, strlen((char *)output)) != strlen((char *)output))
 {
-        			perror("error write 2 cliente\n");    // strictly not an error, it is allowable for fewer characters than requested to be written.
+        			perror("error al escribir en el archivo\n");    // strictly not an error, it is allowable for fewer characters than requested to be written.
              
            }
            

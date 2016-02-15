@@ -49,25 +49,25 @@ void crearTarea(char *min2,char *hora,char *dia,char *mes,char *semana,char *tar
 	strcpy(entradaCronEscapada, entradaCron);
 	escaparAsteriscos(entradaCronEscapada);
 
-	strcat(comandoSistema, "(crontab -l | grep -v \""); //coneste grep evitamos que el comando se repita si ya está cargado en el archivo de cron
-		strcat(comandoSistema, entradaCronEscapada);
-		strcat(comandoSistema, "\" && echo \"");
-		strcat(comandoSistema, entradaCron);
-		strcat(comandoSistema, "\") | crontab -");
+	
+	strcat(comandoSistema, "(crontab -l ; echo \"");
+	strcat(comandoSistema, entradaCron);
+	strcat(comandoSistema, "\") | crontab -");
 
-		status = system(comandoSistema);
-		if(status != 0){
-			fprintf(stderr, "ERROR AL INTENTAR AGREGAR TAREA A CRON (%d)\n", status);
-			return;
+	status = system(comandoSistema);
+
+	if(status != 0){
+		fprintf(stderr, "ERROR AL INTENTAR AGREGAR TAREA A CRON (%d)\n", status);
+		return;
+	}
+	if(strcmp(tarea,"fo")==0){
+		printf("crear una foto\n");
+		int prueba;
+		prueba=write(sdtc,"GET /0/action/snapshot HTTP/1.1\r\n\r\n",35); // crea la foto y la manda por el descriptor
+		if(prueba == -1){
+			perror("error en el write de crearTarea");
 		}
-		if(strcmp(tarea,"fo")==0){
-			printf("crear una foto\n");
-			int prueba;
-			prueba=write(sdtc,"GET /0/action/snapshot HTTP/1.1\r\n\r\n",35); // crea la foto y la manda por el descriptor
-			if(prueba == -1){
-				perror("error en el write de crearTarea");
-			}
-			close(sdtc);		
+		close(sdtc);		
 }
 	
 printf("TAREA PROGRAMADA\n");
